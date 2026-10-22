@@ -32,6 +32,9 @@ public unsafe partial struct Texture {
     // Each mip of each array element needs its own render target
     [FieldOffset(0x80)] public TextureMipRenderTarget* MipRenderTargets;
 
+    /// <summary> Texture whose <see cref="D3D11Texture2D"/> this one shares. Must match in size, mip count, array size and format. </summary>
+    [FieldOffset(0xC0)] public Texture* SourceTexture;
+
     public TextureMipRenderTarget* GetMipRenderTarget(int mipLevel, int arrayElementIndex = 0) {
         // Each mip is stored contiguously. So all elements of the first mip, then the second, etc.
         return &MipRenderTargets[mipLevel * ArraySize + arrayElementIndex];

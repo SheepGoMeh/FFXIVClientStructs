@@ -13,12 +13,18 @@ public unsafe partial struct PostEffectManager {
     [StaticAddress("48 8B 0D ?? ?? ?? ?? 8B 81 70 44 00 00 C1 E8 08 A8 01 0F 85", 3, isPointer: true)]
     public static partial PostEffectManager* Instance();
 
+    /// <summary> Rendered when <see cref="PostEffectFlags.ToneAdjust"/> is set, reads <see cref="ToneAdjustSource"/>. </summary>
+    [FieldOffset(0x1B0)] public PostEffectChain ToneAdjustChain;
     [FieldOffset(0x488)] public PostEffectChain DepthOfFieldChain;
     [FieldOffset(0x4C0)] public PostEffectChain DepthOfFieldCoCChain;
     [FieldOffset(0x4F8)] public PostEffectChain UpdatedDepthOfFieldChain;
     [FieldOffset(0x5D8)] public PostEffectChain ColorFilterChain;
     [FieldOffset(0x610)] public PostEffectChain VignettingChain;
     [FieldOffset(0x4010)] public Texture* SceneInput;
+    /// <summary> <see cref="SwapChain.BackBuffer"/>. Output of the last effect when ToneAdjust is off. </summary>
+    [FieldOffset(0x4020)] public Texture* BackBuffer;
+    /// <summary> Output of the last effect when ToneAdjust is on. Same texture as the render target manager's ToneAdjustSource. </summary>
+    [FieldOffset(0x4028)] public Texture* ToneAdjustSource;
     [FieldOffset(0x4030)] public Texture* Depth;
     [FieldOffset(0x4078)] public Texture* SceneOutput;
     [FieldOffset(0x40A0)] private Texture* Unk40A0;

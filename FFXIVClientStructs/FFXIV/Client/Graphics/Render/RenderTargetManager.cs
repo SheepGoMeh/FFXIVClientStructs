@@ -112,6 +112,11 @@ public unsafe partial struct RenderTargetManager {
     [FieldOffset(0x448)] private bool UnkBool_1;
     [FieldOffset(0x45E)] public byte DepthOfFieldSourceIndex;
 
+    /// <summary> Index in <see cref="Device.OnResizeDestroy"/> of the callback that releases the targets. </summary>
+    [FieldOffset(0x468)] public int OnResizeDestroyCallbackIndex;
+    /// <summary> Index in <see cref="Device.OnResizeCreate"/> of the callback that recreates the targets. </summary>
+    [FieldOffset(0x46C)] public int OnResizeCreateCallbackIndex;
+
     [FieldOffset(0x4A8)] internal Texture* Unk4A8; // Looks the same as Unk68
     [FieldOffset(0x4B0)] internal Texture* Unk4B0; // Looks the same as Unk68
 

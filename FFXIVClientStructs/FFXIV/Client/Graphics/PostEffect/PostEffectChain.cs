@@ -7,6 +7,8 @@ namespace FFXIVClientStructs.FFXIV.Client.Graphics.PostEffect;
 public unsafe struct PostEffectChain {
     [FieldOffset(0x08)] public PostEffectPart** Parts;
     [FieldOffset(0x10)] public uint PartCount;
+    /// <summary> The texture the chain reads. The parts keep their own copy of the pointer. </summary>
+    [FieldOffset(0x18)] public Texture* InputTexture;
     [FieldOffset(0x20)] public uint CommonParameterIndex;
     [FieldOffset(0x28)] public ConstantBuffer* CommonBuffer;
     [FieldOffset(0x30)] public float Scale;

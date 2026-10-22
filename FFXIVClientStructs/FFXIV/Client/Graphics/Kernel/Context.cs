@@ -22,6 +22,9 @@ public unsafe partial struct Context {
     [FieldOffset(0x848)] public ulong AllocationBase;
     [FieldOffset(0x850)] public ulong AllocationUsedSize;
 
+    /// <summary> While false, the PostTick, post effect and UI passes overwrite the sub view index of <see cref="SortKey"/> with a fixed value. </summary>
+    [FieldOffset(0x2F70)] public bool IsSubViewActive;
+
     // TODO: have seen this used to allocate memory that isn't for a command, needs rename
     [MemberFunction("4C 8B D1 4C 8D 42 0F")]
     public partial void* AllocateCommand(ulong size);
