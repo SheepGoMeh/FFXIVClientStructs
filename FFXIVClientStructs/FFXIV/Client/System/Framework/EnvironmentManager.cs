@@ -83,6 +83,13 @@ public partial struct EnvironmentManager {
     public partial void SetWindowMode(uint mode = 3);
 
     /// <summary>
+    /// Applies the Fps config option to the frame rate limit of the Device.
+    /// </summary>
+    /// <param name="fps">0 = None, 1 = Main display refresh rate, 2 = 60 fps, 3 = 30 fps.</param>
+    [MemberFunction("33 C9 44 8D 41 01 85 D2")]
+    public partial void SetFpsCap(int fps);
+
+    /// <summary>
     /// Each value represents one volume slider in the system configuration, expect master volume.<br/>
     /// </summary>
     public enum SoundChannel : uint {

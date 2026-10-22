@@ -21,6 +21,8 @@ public unsafe partial struct Device {
     [FieldOffset(0x48)] public CallbackManager* OnResizeCreate;
     [FieldOffset(0x6C)] public uint ContextCount; // entries of ContextArray, 0x2F78 bytes each
     [FieldOffset(0x70)] public SwapChain* SwapChain;
+    /// <summary> Commands are processed by the <see cref="RenderThread"/> instead of the calling thread. </summary>
+    [FieldOffset(0x78)] public bool UseRenderThread;
     [FieldOffset(0x7A)] public byte RequestResolutionChange;
     [FieldOffset(0x7C)] public byte LastResolutionChangeRequest;
     [FieldOffset(0x8C)] public uint Width;
@@ -73,6 +75,10 @@ public unsafe partial struct Device {
     [FieldOffset(0xE0AB0), CExporterTypeForce("ID3D11DeviceContext4*", true)] public void* D3D11DeviceContext;
 
     [FieldOffset(0xE0AC0)] public ImmediateContext* ImmediateContext; // Client::Graphics::Kernel::Device::ImmediateContext
+
+    /// <summary> Processes the commands of the frame and presents. </summary>
+    [MemberFunction("E8 ?? ?? ?? ?? 80 7B 08 00 74 1E")]
+    public partial void PostTick();
 
     [MemberFunction("E8 ?? ?? ?? ?? 48 89 47 ?? B0")]
     public partial ConstantBuffer* CreateConstantBuffer(int byteSize, uint flags, uint unk);
