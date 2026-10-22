@@ -63,6 +63,9 @@ public unsafe partial struct GraphicsConfig {
 
     [FieldOffset(0x56)] public bool GrassEnableDynamicInterference;
 
+    /// <summary> The TextureRezoType option. While 0, textures that allow it skip one more mip level. </summary>
+    [FieldOffset(0x58)] public uint TextureRezoType;
+
     [FieldOffset(0x65)] public bool HousingSSAOEnable;
     [FieldOffset(0x66)] public bool PortraitPreview; // GPose: Preview the framing of the camera composition used in portrait mode.
     [FieldOffset(0x67)] public bool PortraitMode; // GPose: Enter portrait mode, rotating the camera ninety degrees.<br>* Screenshots must be taken manually.
